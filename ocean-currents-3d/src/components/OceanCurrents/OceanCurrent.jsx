@@ -60,18 +60,7 @@ function OceanCurrent({ current, onClick, isSelected }) {
 
   return (
     <group>
-      <line 
-        onClick={e => { 
-          e.stopPropagation(); 
-          onClick(current); 
-        }}
-        onPointerOver={e => {
-          document.body.style.cursor = 'pointer';
-        }}
-        onPointerOut={e => {
-          document.body.style.cursor = 'default';
-        }}
-      >
+      <line>
         <bufferGeometry attach="geometry">
           <bufferAttribute
             attach="attributes-position"
@@ -103,6 +92,16 @@ function OceanCurrent({ current, onClick, isSelected }) {
         fillOpacity={1}
         userData={{ current: current.name }}
         renderOrder={1}
+        onClick={e => { 
+          e.stopPropagation(); 
+          onClick(current); 
+        }}
+        onPointerOver={e => {
+          document.body.style.cursor = 'pointer';
+        }}
+        onPointerOut={e => {
+          document.body.style.cursor = 'default';
+        }}
       >
         {current.name}
       </Text>
